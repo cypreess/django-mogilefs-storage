@@ -38,6 +38,7 @@ class MogileFSStorage(Storage):
 
     def _save(self, name, content):
         self.client.store_file(name, content, cls=self.mogile_class)
+        return name
 
     def delete(self, name):
         self.client.delete(name)
