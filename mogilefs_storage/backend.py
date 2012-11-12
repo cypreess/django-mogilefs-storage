@@ -37,6 +37,7 @@ class MogileFSStorage(Storage):
 
 
     def _save(self, name, content):
+        content.seek(0)
         self.client.store_file(name, content, cls=self.mogile_class)
         return name
 
