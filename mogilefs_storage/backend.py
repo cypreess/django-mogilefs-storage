@@ -26,7 +26,9 @@ class MogileFSStorage(Storage):
         self.client = pymogile.Client(domain=self.domain, trackers=self.trackers)
 
     def _open(self, name, mode):
-        return File(file=self.client.read_file(name), name=name)
+        f = self.client.read_file(name)
+        f.closed = False    # required by django.core.files.File
+        return File(file=f, name=name)
 
 
     def url(self, name):
