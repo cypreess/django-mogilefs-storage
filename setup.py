@@ -8,5 +8,7 @@ setup(
     license='MIT',
     author='Krzysztof Dorosz',
     author_email='cypreess@gmail.com',
-    description='Django MogileFS file backend storage using pymogile client'
+    description='Django MogileFS file backend storage using pymogile client',
+    install_requires=['django'],
+    dependency_links=['git+https://github.com/insom/pymogile.git@2d47f017e4adc0b283aadb2312f7d434b39e59b4'],
 )
