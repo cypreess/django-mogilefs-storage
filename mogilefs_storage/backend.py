@@ -1,5 +1,6 @@
 import urlparse
 from django.conf import settings
+from django.core.files import File
 from django.core.files.storage import Storage
 from django.core.exceptions import ImproperlyConfigured
 import pymogile
@@ -25,7 +26,7 @@ class MogileFSStorage(Storage):
         self.client = pymogile.Client(domain=self.domain, trackers=self.trackers)
 
     def _open(self, name, mode):
-        return self.client.read_file(name)
+        return File(file=self.client.read_file(name), name=name)
 
 
     def url(self, name):
